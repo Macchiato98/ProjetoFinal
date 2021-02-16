@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoFinal.Dados;
+using ProjetoFinal.Dados.Entidades;
 using ProjetoFinal.Models;
 using System;
 using System.Collections.Generic;
@@ -10,28 +12,41 @@ namespace ProjetoFinal.Controllers
 {
     public class HomeController : Controller
     {
+
+        private readonly DataContext _context;
+
+        public HomeController(DataContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index([Bind("Id,Nome,Email,Telemovel,Reservar")] Reservas reservas)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            if (ModelState.IsValid)
+            {
+                _context.Add(reservas);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(reservas);
         }
 
-        public IActionResult Contact()
+        private Reservas ToIndex(Reservas reservas)
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return new Reservas
+            {
+                Id = reservas.Id,
+                Nome = reservas.Nome,
+                Email = reservas.Email,
+                Telemovel = reservas.Telemovel,
+            };
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

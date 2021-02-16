@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ProjetoFinal.Dados.Entidades.Reservas
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -7,7 +9,7 @@
         <video src="Video/DiogoMachadoVideoFinal_exemplar.mp4" autoplay muted loop></video>
     </div>
     <div class="content">
-        <a href="#" class="btn" id="botao">Get Started!</a>
+        <a href="#" class="btn" id="bota">Get Started!</a>
     </div>
 </section>
 <section id="Actividades">
@@ -42,20 +44,29 @@
 <section id="Reservas">
     <h1>Reserve o seu bilhete aqui!</h1>
     <div class="formu">
-        <form action="">
+        <form asp-action="Index" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
-                <input type="text" placeholder="O seu nome..."><!--Nome--->
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div>
-                <input type="email" placeholder="O seu email"><!--Email--->
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div>
-                <input type="text" placeholder="O seu número telemóvel"><!--Numero de telemovel--->
+                <label asp-for="Telemovel" class="control-label"></label>
+                <input asp-for="Telemovel" class="form-control" />
+                <span asp-validation-for="Telemovel" class="text-danger"></span>
             </div>
             <div>
-                <input type="number" placeholder="Quantos bilhetes quer reservar?"><!--Numero de biilhetes--->
+                <label asp-for="Reservar" class="control-label"></label>
+                <input asp-for="Reservar" class="form-control" />
+                <span asp-validation-for="Reservar" class="text-danger"></span>
             </div>
-            <button>Enviar</button>
+            <input id="botao" type="submit" value="Enviar" class="button_1" />
         </form>
     </div>
 </section>
@@ -153,3 +164,15 @@
         </ul>
     </div>
 </section>
+@section Scripts {
+
+    <script type="text/javascript">
+        
+        const button = document.querySelector('#botao');
+
+        button.addEventListener('click', function () {
+            alert('Reserva efetuada com sucesso!');
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
