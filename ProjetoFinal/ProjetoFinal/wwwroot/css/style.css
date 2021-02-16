@@ -239,7 +239,7 @@ h1
 
 #Navigation
 {
-  width: 5rem;
+  width: 10rem;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -247,7 +247,7 @@ h1
   background: #7a1a1d;
   z-index: 1;
   display: grid;
-  place-items: center;
+  /*place-items: center;*/
 }
 
 .navbar ul
