@@ -1,26 +1,3 @@
-const navigat = document.querySelector('.Nav');
-const bot = document.querySelector('.btn');
-
-let botClose = false;
-let navOpen = false;
-
-bot.addEventListener('click', () => {
-
-  if(!botClose)
-  {
-    navigat.classList.add('close')
-
-    if(navigat.classList.add('close'))
-    {
-       bot.style.display == 'none';
-    }
-  }
-});
-
-
-
-
-
 /*let botao = document.querySelector('#botao');
 
 

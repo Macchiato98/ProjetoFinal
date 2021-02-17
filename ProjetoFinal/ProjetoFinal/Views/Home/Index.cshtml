@@ -14,37 +14,49 @@
 </section>
 <section id="Actividades">
     <h1>As nossas actividades</h1>
-    <div class="gallery">
-        <div class="person">
-            <img src="Personagens/tedbundy250.jpg" alt="">
-            <p>Ted Bundy <br> 'O assassino charmoso'</p>
+    <div class="ImgGeral">
+        <div class="responsive">
+            <div class="gallery">
+                <img src="~/Personagens/tedbundy250.jpg" alt="Ted Bundy" data-original="tedbundy250.jpg">
+                <div class="desc">Ted Bundy <br> 'O assassino charmoso'</div>
+            </div>
         </div>
-        <div class="person">
-            <img src="Personagens/leonardacianciulli250.jpg" alt="">
-            <p>Leonarda Ciuanciulli <br> 'A canibal'</p>
+        <div class="responsive">
+            <div class="gallery">
+                <img src="~/Personagens/leonardacianciulli250.jpg" alt="Leonarda Cianciulli" data-original="leonardacianciulli.jpg">
+                <div class="desc">Leonarda Ciuanciulli <br> 'A canibal'</div>
+            </div>
         </div>
-        <div class="person">
-            <img src="Personagens/elizabethbathory250.jpg" alt="">
-            <p>Elizabeth Bathory <br> 'A condessa sangrenta'</p>
+        <div class="responsive">
+            <div class="gallery">
+                <img src="~/Personagens/elizabethbathory250.jpg" alt="Elizabeth Bathory" data-original="isabelbathory.jpg">
+                <div class="desc">Elizabeth Bathory <br> 'A condessa sangrenta'</div>
+            </div>
         </div>
-        <div class="person">
-            <img src="Personagens/luisa_de_jesus250.jpg" alt="">
-            <p>Luisa de Jesus <br> 'A infanticida'</p>
+        <div class="responsive">
+            <div class="gallery">
+                <img src="~/Personagens/luisa_de_jesus250.jpg" alt="Luisa de Jesus" data-original="luisa_de_jesus.jpg">
+                <div class="desc">Luisa de Jesus <br> 'A infanticida'</div>
+            </div>
         </div>
-        <div class="person">
-            <img src="Personagens/diogoalves250.jpg" alt="">
-            <p>Diogo Alves <br> 'O assassino do aqueduto'</p>
+        <div class="responsive">
+            <div class="gallery">
+                <img src="~/Personagens/diogoalves250.jpg" alt="Diogo Alves" data-original="diogoalves.png">
+                <div class="desc">Diogo Alves <br> 'O assassino do aqueduto'</div>
+            </div>
         </div>
-        <div class="person">
-            <img src="Personagens/vitorjorge250.jpg" alt="">
-            <p>Vitor Jorge <br> 'O mata sete'</p>
+        <div class="responsive">
+            <div class="gallery">
+                <img src="~/Personagens/vitorjorge250.jpg" alt="Vitor Jorge" data-original="vitorjorge.png">
+                <div class="desc">Vitor Jorge <br> 'O mata sete'</div>
+            </div>
         </div>
     </div>
 </section>
 <section id="Reservas">
     <h1>Reserve o seu bilhete aqui!</h1>
     <div class="formu">
-        <form asp-action="Index" enctype="multipart/form-data">
+        <form asp-action="Index" class="formula" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <label asp-for="Nome" class="control-label"></label>
@@ -66,7 +78,7 @@
                 <input asp-for="Reservar" class="form-control" />
                 <span asp-validation-for="Reservar" class="text-danger"></span>
             </div>
-            <input id="botao" type="submit" value="Enviar" class="button_1" />
+            <button id="botao" type="submit" value="Enviar"> Enviar </button>
         </form>
     </div>
 </section>
@@ -164,14 +176,56 @@
         </ul>
     </div>
 </section>
+
+<div class="modal">
+    <img src="/Personagens/tedbundy.jpg" class="full-img" />
+    <p class="caption"></p>
+</div>
+
 @section Scripts {
 
     <script type="text/javascript">
-        
+
+        const navigat = document.querySelector('.Nav');
+        const bot = document.querySelector('.btn');
+        const modal = document.querySelector('.modal');
+        const preview = document.querySelectorAll('.gallery img');
+        const original = document.querySelector('.full-img');
+        const caption = document.querySelector('.caption');
         const button = document.querySelector('#botao');
 
         button.addEventListener('click', function () {
             alert('Reserva efetuada com sucesso!');
+        });
+
+        preview.forEach((preview) => {
+            preview.addEventListener('click', () => {
+                modal.classList.add('open');
+                original.classList.add('open');
+
+                const originalSrc = preview.getAttribute('data-original');
+                original.src = `./Personagens/${originalSrc}`;
+
+                const altText = preview.alt;
+                caption.textContent = altText;
+            });
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                modal.classList.remove('open');
+            }
+        });
+
+        bot.addEventListener('click', () => {
+
+            if (!botClose) {
+                navigat.classList.add('close')
+
+                if (navigat.classList.add('close')) {
+                    bot.style.display == 'none';
+                }
+            }
         });
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
