@@ -3,14 +3,13 @@
     src: url(Fonts/Boldness.otf);
 }
 
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
 body {
-
     cursor: url('Cursor/MouseOverLineIconVector.cur'), auto;
 }
 
@@ -38,7 +37,7 @@ h1 {
 
 section
 {
-  display: block;
+   display: block;
 }
 
 /* Video */
@@ -110,6 +109,15 @@ section
     transform: scale(0.98);
 }
 
+
+/* Actividades */
+
+#Actividades {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+}
+
 .ImgGeral{
     flex-direction:column;
     float:left;
@@ -138,15 +146,6 @@ section
     flex-direction:column;
 }
 
-/* Actividades */
-
-#Actividades {
-    background-color: #000;
-    color: #fff;
-    height: 100vh;
-}
-
-
 /* Reservas */
 
 #Reservas {
@@ -156,29 +155,77 @@ section
     background-size: cover;
 }
 
-.formu {
-    width: 80vw;
-    display: flex;
-    margin: auto;
-    align-items: center;
-    justify-items: center;
-    margin-top: 50px;
+input {
+    font-family: 'Boldness';
+    width: 100%;
+    outline: none;
+    border: 2px solid #7a1a1d;
+    background: none;
+    padding: 0.6rem 1.2rem;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
-.formu form {
-    margin: auto;
-    align-items: center;
-    justify-items: center;
+form label {
+    position: absolute;
+    padding: 0 0.4rem;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 400;
+    pointer-events: none;
+    transition: 0.5s;
 }
 
 
-form .formula
-{
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
+.formu{
     position: relative;
-    height: 50px;
+    width: 100%;
+    min-height: 75vh;
+    padding-left: 30rem;
+    padding-top: 10rem;
+    overflow: hidden;
+}
+
+form{
+    padding: 2.3rem 10rem;
+    overflow: hidden;
+    position: relative;
+    margin: 10px; 
+}
+
+.formula{
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.boton {
+    padding: 0.6rem 0.8rem;
+    background: none;
+    border: 2px solid #7a1a1d;
+    font-size: 0.95rem;
+    color: #fff;
+    border-radius: 50px;
+    line-height: 1;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0;
+}
+
+.boton:hover {
+    border: none;
+    background-color: #fff;
+    color: #7a1a1d;
+    font-size: 1.5rem;
 }
 
 /* Contactos */
@@ -208,8 +255,30 @@ form .formula
     background-size: cover;
 }
 
-/* Navigation */
+.Info{
+    position: relative;
+}
 
+.Info .inform ul{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Boldness';
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.inform ul li {
+    list-style: none;
+    font-family: 'Boldness';
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* Navigation */
 #Navigation {
     width: 5rem;
     height: 100vh;
@@ -334,4 +403,19 @@ form .formula
         width: 49.99999%;
         margin: 6px 0;
     }
+
+    .formu {
+        padding-left: 3rem;
+    }
+
+    formula {
+        display: grid;
+        height: 50px;
+        margin: 15px;
+    }
+
+    .Info .inform ul {
+        left: 15rem;
+    }
+
 }

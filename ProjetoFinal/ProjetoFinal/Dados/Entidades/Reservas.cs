@@ -17,11 +17,11 @@ namespace ProjetoFinal.Dados.Entidades
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "O seu número de telemóvel")]
+        [Display(Name = "Telemóvel")]
         public string Telemovel { get; set; }
 
         [Required]
-        [Display(Name = "Quantos bilhetes quer reservar?")]
+        [Display(Name = "Nº Bilhetes")]
         public int Reservar { get; set; }
 
     }

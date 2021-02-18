@@ -60,12 +60,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" class="form-control inputForm" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div>
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control inputForm" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div>
@@ -75,10 +75,10 @@
             </div>
             <div>
                 <label asp-for="Reservar" class="control-label"></label>
-                <input asp-for="Reservar" class="form-control" />
+                <input asp-for="Reservar" class="form-control inputForm" />
                 <span asp-validation-for="Reservar" class="text-danger"></span>
             </div>
-            <button id="botao" type="submit" value="Enviar"> Enviar </button>
+            <button id="botao" type="submit" value="Enviar" class="boton"> Enviar </button>
         </form>
     </div>
 </section>
@@ -91,6 +91,13 @@
     </div>
     <div class="Info">
         <h1>Mais informações</h1>
+        <div class="inform">
+            <ul>
+                <li><i class="fas fa-map-marker-alt"> Estrada Quinta da Rainha, Queluz</i></li>
+                <li><i class="fas fa-envelope"> rhumanos@servummortis.pt</i></li>
+                <li><i class="fas fa-phone-alt"> (+351) 218954467</i></li>
+            </ul>
+        </div>
     </div>
 </section>
 <section id="Navigation">
@@ -178,7 +185,7 @@
 </section>
 
 <div class="modal">
-    <img src="/Personagens/tedbundy.jpg" class="full-img" />
+    <img src="" class="full-img" />
     <p class="caption"></p>
 </div>
 
@@ -193,6 +200,18 @@
         const original = document.querySelector('.full-img');
         const caption = document.querySelector('.caption');
         const button = document.querySelector('#botao');
+        const inputs = document.querySelectorAll('.input');
+
+
+        inputs.forEach((inputs) => {
+            inputs.addEventListener('focus', focusFunc);
+        });
+
+        function focusFunc() {
+            let parent = this.parentNode;
+            parent.classList.add('focus');
+        }
+
 
         button.addEventListener('click', function () {
             alert('Reserva efetuada com sucesso!');
@@ -227,6 +246,7 @@
                 }
             }
         });
+
     </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
